@@ -20,24 +20,31 @@ namespace BATCapstoneSP2017.Controllers
 
 
         // GET: /Roles/
-        //[Authorize(Roles="Administrator")]
+        [Authorize(Roles="Administrator")]
         public ActionResult Index()
         {
-            if (Roles.IsUserInRole("Administrator"))
-            {
-                //var roles = db.AspNetRoles.ToList();
-                return View(context.Roles.ToList());
-            }
+            //if (Roles.IsUserInRole("Administrator"))
+            //{
+            //    //var roles = db.AspNetRoles.ToList();
+            //    return View(context.Roles.ToList());
+            //}
 
-            else if (!Roles.IsUserInRole("Administrator"))
-            {
-                return View();
-            }
+            //else if (!Roles.IsUserInRole("Administrator"))
+            //{
+            //    return View();
+            //}
 
-            else
-            {
-                return View();
-            }
+            //else if (Roles.GetRolesForUser("NULL"))
+            //{
+            //    return View();
+            //}
+
+            //else
+            //{
+            //    return View();
+            //}
+
+            return View(context.Roles.ToList());
             
             
         }
