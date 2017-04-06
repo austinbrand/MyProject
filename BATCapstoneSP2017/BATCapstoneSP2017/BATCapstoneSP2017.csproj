@@ -198,9 +198,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerMenuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrderMenuItemsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -385,6 +387,8 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\ManageUsers.cshtml" />
     <Content Include="Views\Roles\NonValidRoleMessage.cshtml" />
+    <Content Include="Views\CustomerMenu\Index.cshtml" />
+    <Content Include="Views\OrderMenuItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
