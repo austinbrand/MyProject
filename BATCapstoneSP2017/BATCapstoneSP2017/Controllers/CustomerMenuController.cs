@@ -19,22 +19,22 @@ namespace BATCapstoneSP2017.Controllers
         public ActionResult Index()
         {
             //List<MenuItem> MenuItems = new List<MenuItem>();
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            //var cart = ShoppingCart.GetCart(this.HttpContext);
 
             return View(db.MenuItems.ToList());
         }
 
-        [HttpPost]
-        public ActionResult ShoppingCart()
-        {
+        //[HttpPost]
+        //public ActionResult ShoppingCart()
+        //{
             // GET: /Store/AddToCart/5
             // Retrieve the item from the database
             //var addedItem = storeDB.Items.Single(item => item.ID == id);
 
-            var addedItem = db.MenuItems.Single(item => item.ID == Id);
+            //var addedItem = db.MenuItems.Single(item => item.ID == Id);
 
             // Add it to the shopping cart
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            //var cart = ShoppingCart.GetCart(this.HttpContext);
 
             //int count = cart.AddToCart(addedItem);
 
@@ -52,7 +52,7 @@ namespace BATCapstoneSP2017.Controllers
 
             // Go back to the main store page for more shopping
            // return RedirectToAction("Index");
-        }
+        //}
         }
     }
 

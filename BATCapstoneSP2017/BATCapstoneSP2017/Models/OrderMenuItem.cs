@@ -18,6 +18,7 @@ namespace BATCapstoneSP2017.Models
         public int MenuItemID { get; set; }
         public int OrderID { get; set; }
         public int Quantity { get; set; }
+        public decimal Total { get; set; }
     
         public virtual MenuItem MenuItem { get; set; }
         public virtual Order Order { get; set; }

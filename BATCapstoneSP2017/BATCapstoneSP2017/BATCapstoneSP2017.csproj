@@ -204,6 +204,7 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderMenuItemsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +219,9 @@
       <DependentUpon>WholeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>WholeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cart.cs">
       <DependentUpon>WholeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
@@ -259,6 +263,7 @@
     <Compile Include="Models\OrderMenuItem.cs">
       <DependentUpon>WholeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>WholeModel.tt</DependentUpon>
     </Compile>
@@ -279,6 +284,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -389,9 +396,14 @@
     <Content Include="Views\Roles\NonValidRoleMessage.cshtml" />
     <Content Include="Views\CustomerMenu\Index.cshtml" />
     <Content Include="Views\OrderMenuItems\Index.cshtml" />
+    <Content Include="Views\OrderMenuItems\CreateOrder.cshtml" />
+    <Content Include="Views\OrderMenuItems\Edit.cshtml" />
+    <Content Include="Views\OrderMenuItems\Delete.cshtml" />
+    <Content Include="Views\Menu\MenuCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -16,8 +16,9 @@ namespace BATCapstoneSP2017.Controllers
         WholeContext db = new WholeContext();
         //private MenuItem _db = new MenuItem();
         // Going to make new view using scaffolding
-        
-        
+
+
+        [Authorize(Roles = "Administrator")]
         // GET: Menu
         public ActionResult MenuItem()
         {
@@ -33,6 +34,14 @@ namespace BATCapstoneSP2017.Controllers
             //return View(_db.MenuItem.ToList());
             //return View(_db.MovieSet.ToList());
         }
+
+        /*
+        [Authorize(Roles = "Customer")]
+        public ActionResult MenuCustomer()
+        {
+            return View(db.MenuItems.ToList());
+        }
+        */
 
         // GET: /Home/Details/5 
         public ActionResult Details(int id)

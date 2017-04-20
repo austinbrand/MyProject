@@ -17,6 +17,8 @@ namespace BATCapstoneSP2017.Models
         public int ID { get; set; }
         public string URL { get; set; }
         public Nullable<int> MenuItemID { get; set; }
+        public string URLName { get; set; }
+        public byte[] Image1 { get; set; }
     
         public virtual MenuItem MenuItem { get; set; }
     }

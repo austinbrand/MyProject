@@ -91,6 +91,8 @@
     <EntitySetMapping Name="Images">
       <EntityTypeMapping TypeName="WholeModel.Image">
         <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="Image1" ColumnName="Image" />
+          <ScalarProperty Name="URLName" ColumnName="URLName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="URL" ColumnName="URL" />
           <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
@@ -111,6 +113,15 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="WholeModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="AspNetUsersID" ColumnName="AspNetUsersID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -121,6 +132,7 @@
     <EntitySetMapping Name="OrderMenuItems">
       <EntityTypeMapping TypeName="WholeModel.OrderMenuItem">
         <MappingFragment StoreEntitySet="OrderMenuItem">
+          <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -147,5 +159,16 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="WholeModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

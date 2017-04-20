@@ -14,12 +14,6 @@ namespace BATCapstoneSP2017.Models
     
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -29,8 +23,5 @@ namespace BATCapstoneSP2017.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zipcode { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

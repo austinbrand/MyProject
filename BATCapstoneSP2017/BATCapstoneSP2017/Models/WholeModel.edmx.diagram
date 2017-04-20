@@ -14,16 +14,18 @@
         <EntityTypeShape EntityType="WholeModel.Employee" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.Image" Width="1.5" PointX="8" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.MenuItem" Width="1.5" PointX="5.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WholeModel.Order" Width="1.5" PointX="5.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WholeModel.Order" Width="1.5" PointX="5.625" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.OrderMenuItem" Width="1.5" PointX="8" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.sysdiagram" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="WholeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="WholeModel.FK_Order_CustomerID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.FK_Images_MenuItemID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.FK_OrderMenuItem_MenuItemID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.FK_OrderMenuItem_OrderID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="WholeModel.FK_Order_AspNetUsers" />
+        <EntityTypeShape EntityType="WholeModel.Cart" Width="1.5" PointX="8" PointY="11.5" />
+        <AssociationConnector Association="WholeModel.FK_Cart_MenuItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

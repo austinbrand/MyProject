@@ -19,6 +19,7 @@ namespace BATCapstoneSP2017.Models
         {
             this.Images = new HashSet<Image>();
             this.OrderMenuItems = new HashSet<OrderMenuItem>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int ID { get; set; }
@@ -31,5 +32,7 @@ namespace BATCapstoneSP2017.Models
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderMenuItem> OrderMenuItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

@@ -21,12 +21,21 @@ namespace BATCapstoneSP2017.Models
         }
     
         public int ID { get; set; }
-        public int AspNetUsersID { get; set; }
+        public string AspNetUsersID { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int Zipcode { get; set; }
+        public decimal Total { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderMenuItem> OrderMenuItems { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
