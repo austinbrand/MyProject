@@ -403,6 +403,15 @@ namespace BATCapstoneSP2017.Controllers
             return View();
         }
 
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,0 +1,97 @@
+﻿@model BATCapstoneSP2017.ViewModels.ShoppingCartViewModel
+
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<h2>Shopping Cart</h2>
+<div id="update-message" class="text-info">
+</div>
+@if (Model.CartItems.Count==0)
+{
+    <p>Your shopping cart is empty, please view our customer menu.</p>
+}
+else
+{
+    <table class="table-responsive table-bordered table-striped">
+        <tr>
+            @*<th>
+                Menu Item Name
+            </th>*@
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price (each)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>Sub-total</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.CartItems)
+        {
+            <tr id="row-@item.MenuItemID">
+                @*<td>
+                    @Html.ActionLink(item.MenuItem.Name, "Details", "ShoppingCart", new {id = item.MenuItemID}, null)
+                </td>*@
+                <td>
+                    @item.MenuItem.Name
+                </td>
+                <td>
+                    @item.MenuItem.Description
+                </td>
+                <td>
+                    @item.MenuItem.Price
+                </td>
+                <td id="item-count-@item.MenuItemID">
+                    @item.Count
+                </td>
+                <td>
+                    @((item.MenuItem.Price * item.Count))
+                </td>
+                <td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Remove From Cart", "RemoveFromCart", new { id = item.ID }) 
+
+
+                    
+
+                    @*<a href="" class="RemoveLink" data-id="@item.MenuItemID">
+                        Remove from cart
+                    </a>*@
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                Total
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="cart-total" class="text-success">
+                <b>@Model.CartTotal</b>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <p class="button">
+        @Html.ActionLink("Continue shopping", "Index", "CustomerMenu")
+    </p>
+    <p class="button">
+        @Html.ActionLink("Order Checkout ", "AddressAndPayment", "Checkout")
+    </p>
+
+}

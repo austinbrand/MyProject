@@ -113,6 +113,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="WholeModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
           <ScalarProperty Name="State" ColumnName="State" />

@@ -110,9 +110,10 @@ namespace BATCapstoneSP2017.Models
             return total ?? decimal.Zero;
         }
 
-        public int CreateOrder(Order customerOrder)
+        public Order CreateOrder(Order customerOrder)
         {
             decimal orderTotal = 0;
+            customerOrder.OrderMenuItems = new List<OrderMenuItem>();
 
             var cartItems = GetCartItems();
 
@@ -120,15 +121,16 @@ namespace BATCapstoneSP2017.Models
             {
                 var orderedMenuItems = new OrderMenuItem
                 {
+                    ID = item.ID,
                     MenuItemID = item.MenuItemID,
                     OrderID = customerOrder.ID,
                     Quantity = item.Count
-
                 };
 
                   orderTotal += (item.Count * item.MenuItem.Price); 
                 //orderTotal += (item.Count * item.MenuItem.Price);
 
+                customerOrder.OrderMenuItems.Add(orderedMenuItems);
                 db.OrderMenuItems.Add(orderedMenuItems);
             }
 
@@ -139,7 +141,7 @@ namespace BATCapstoneSP2017.Models
 
             EmptyCart();
 
-            return customerOrder.ID;
+            return customerOrder;
         }
 
         public string GetCartID(HttpContextBase context)
@@ -161,6 +163,8 @@ namespace BATCapstoneSP2017.Models
             return context.Session[CartSessionKey].ToString();
         }
 
+
+        // This method gets the shopping cart for the specified user 
         public void MigrateCart(string userName)
         {
             var shoppingCart = db.Carts.Where(c => c.CartID == ShoppingCartID);

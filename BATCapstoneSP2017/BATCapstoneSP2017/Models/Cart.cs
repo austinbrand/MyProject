@@ -14,6 +14,12 @@ namespace BATCapstoneSP2017.Models
     
     public partial class Cart
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cart()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int ID { get; set; }
         public string CartID { get; set; }
         public int MenuItemID { get; set; }
@@ -21,5 +27,7 @@ namespace BATCapstoneSP2017.Models
         public System.DateTime DateCreated { get; set; }
     
         public virtual MenuItem MenuItem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

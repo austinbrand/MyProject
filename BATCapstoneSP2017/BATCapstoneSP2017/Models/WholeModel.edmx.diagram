@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95f095593fee4829bd971ecc744abde3" Name="Diagram1">
+      <Diagram DiagramId="95f095593fee4829bd971ecc744abde3" Name="Diagram1" ZoomLevel="76">
         <EntityTypeShape EntityType="WholeModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WholeModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
@@ -23,9 +23,9 @@
         <AssociationConnector Association="WholeModel.FK_OrderMenuItem_MenuItemID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.FK_OrderMenuItem_OrderID" ManuallyRouted="false" />
         <AssociationConnector Association="WholeModel.AspNetUserRoles" ManuallyRouted="false" />
-        <AssociationConnector Association="WholeModel.FK_Order_AspNetUsers" />
         <EntityTypeShape EntityType="WholeModel.Cart" Width="1.5" PointX="8" PointY="11.5" />
         <AssociationConnector Association="WholeModel.FK_Cart_MenuItem" />
+        <AssociationConnector Association="WholeModel.FK_Order_Cart" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

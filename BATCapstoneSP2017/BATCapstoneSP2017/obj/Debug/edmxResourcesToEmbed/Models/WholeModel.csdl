@@ -64,7 +64,6 @@
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-    <NavigationProperty Name="Orders" Relationship="WholeModel.FK_Order_AspNetUsers" FromRole="AspNetUser" ToRole="Order" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -132,7 +131,7 @@
     <Property Name="State" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="Zipcode" Type="Int32" Nullable="false" />
     <Property Name="Total" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <NavigationProperty Name="AspNetUser" Relationship="WholeModel.FK_Order_AspNetUsers" FromRole="Order" ToRole="AspNetUser" />
+    <Property Name="CartId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderMenuItem">
     <Key>
@@ -209,7 +208,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_OrderMenuItem_OrderID">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OrderMenuItem" Type="Self.OrderMenuItem" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Order">
@@ -261,28 +262,16 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_AspNetUsers" Association="WholeModel.FK_Order_AspNetUsers">
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
     <EntitySet Name="Carts" EntityType="WholeModel.Cart" />
     <AssociationSet Name="FK_Cart_MenuItem" Association="WholeModel.FK_Cart_MenuItem">
       <End Role="MenuItem" EntitySet="MenuItems" />
       <End Role="Cart" EntitySet="Carts" />
     </AssociationSet>
+    <AssociationSet Name="FK_Order_Cart" Association="WholeModel.FK_Order_Cart">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_Order_AspNetUsers">
-    <End Type="WholeModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
-    <End Type="WholeModel.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUser">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="AspNetUsersID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="ID" />
@@ -293,6 +282,7 @@
     <Property Name="Count" Type="Int32" Nullable="false" />
     <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
     <NavigationProperty Name="MenuItem" Relationship="WholeModel.FK_Cart_MenuItem" FromRole="Cart" ToRole="MenuItem" />
+    <NavigationProperty Name="Orders" Relationship="WholeModel.FK_Order_Cart" FromRole="Cart" ToRole="Order" />
   </EntityType>
   <Association Name="FK_Cart_MenuItem">
     <End Type="WholeModel.MenuItem" Role="MenuItem" Multiplicity="1" />
@@ -303,6 +293,20 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="MenuItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Cart">
+    <End Type="WholeModel.Cart" Role="Cart" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="WholeModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CartId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

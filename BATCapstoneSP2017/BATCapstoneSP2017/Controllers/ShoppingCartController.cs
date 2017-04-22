@@ -41,27 +41,55 @@ namespace BATCapstoneSP2017.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        
         public ActionResult RemoveFromCart(int id)
+        {
+            Cart cartItemToDelete = db.Carts.Find(id);
+            
+            
+            if (cartItemToDelete == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cartItemToDelete);
+
+        }
+
+
+        [HttpPost, ActionName("RemoveFromCart")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemovedFromCart(int id)
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            //string menuItemName = db.Carts.FirstOrDefault(item => item.ProductId == id).Product.Name;
-            string menuItemName = db.Carts.FirstOrDefault(item => item.MenuItemID == id).MenuItem.Name;
+            Cart cartItemToDelete = db.Carts.Find(id);
+            //Order orderItemToDelete = db.Orders.Find(id);
+            
+            //string menuItemName = db.Carts.FirstOrDefault(item => item.MenuItemID == id).MenuItem.Name; 
 
-            int itemCount = cart.RemoveFromCart(id);
             //int itemCount = cart.RemoveFromCart(id);
+            //if (cartItemToDelete.ID == orderItemToDelete.CartId)
+            //{
+            //    db.Carts.Remove(cartItemToDelete);
+            //    db.Orders.Remove(cartItemToDelete);
+            //}
 
-            var results = new ShoppingCartRemoveViewModel
-            {
-                Message = Server.HtmlEncode(menuItemName) + " has been removed from your shopping cart",
-                CartTotal = cart.GetTotal(),
-                CartCount = cart.GetCount(),
-                ItemCount = itemCount,
-                DeleteId = id
-            };
+            db.Carts.Remove(cartItemToDelete);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+            
 
-            return Json(results);
+            //var results = new ShoppingCartRemoveViewModel
+            //{
+            //    Message = Server.HtmlEncode(menuItemName) + " has been removed from your shopping cart",
+            //    CartTotal = cart.GetTotal(),
+            //    CartCount = cart.GetCount(),
+            //    ItemCount = itemCount,
+            //    DeleteId = id
+            //};
+
+            //return Json(results);
         }
 
         [ChildActionOnly]
@@ -73,6 +101,12 @@ namespace BATCapstoneSP2017.Controllers
             return PartialView("CartSummary");
         }
 
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
 
     }
 }

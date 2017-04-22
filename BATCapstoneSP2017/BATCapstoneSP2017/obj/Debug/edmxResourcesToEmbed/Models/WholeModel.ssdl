@@ -71,7 +71,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CartID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="MenuItemID" Type="int" Nullable="false" />
     <Property Name="Count" Type="int" Nullable="false" />
@@ -138,6 +138,7 @@
     <Property Name="State" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Zipcode" Type="int" Nullable="false" />
     <Property Name="Total" Type="money" Nullable="false" />
+    <Property Name="CartId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderMenuItem">
     <Key>
@@ -239,15 +240,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_AspNetUsers">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+  <Association Name="FK_Order_Cart">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
     <End Role="Order" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
+      <Principal Role="Cart">
+        <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Order">
-        <PropertyRef Name="AspNetUsersID" />
+        <PropertyRef Name="CartId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -314,8 +315,8 @@
       <End Role="MenuItem" EntitySet="MenuItem" />
       <End Role="Images" EntitySet="Images" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_AspNetUsers" Association="Self.FK_Order_AspNetUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    <AssociationSet Name="FK_Order_Cart" Association="Self.FK_Order_Cart">
+      <End Role="Cart" EntitySet="Cart" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderMenuItem_MenuItemID" Association="Self.FK_OrderMenuItem_MenuItemID">

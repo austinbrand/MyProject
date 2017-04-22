@@ -1,0 +1,14 @@
+﻿@model BATCapstoneSP2017.Models.Order
+
+@{
+    ViewBag.Title = "Complete";
+}
+
+<h2>Order Complete</h2>
+
+<p>Thanks for your order! Your order id is: @Model</p>
+<p>
+    If you want to make another order click below to head back to our amazing menu!
+    @Html.ActionLink("Customer Menu", "Index", "CustomerMenu")
+</p> 
+

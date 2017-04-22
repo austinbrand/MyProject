@@ -33,9 +33,9 @@ namespace BATCapstoneSP2017.Models
         public string State { get; set; }
         public int Zipcode { get; set; }
         public decimal Total { get; set; }
+        public int CartId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderMenuItem> OrderMenuItems { get; set; }
-        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
