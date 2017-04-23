@@ -6,9 +6,96 @@
 
 <h2>Order Complete</h2>
 
-<p>Thanks for your order! Your order id is: @Model</p>
-<p>
-    If you want to make another order click below to head back to our amazing menu!
-    @Html.ActionLink("Customer Menu", "Index", "CustomerMenu")
-</p> 
+<h3>Thanks for your order! Your order id is: @Model.ID</h3>
+<h4>Order Details: </h4>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Email</p>
+        </th>
+        <th>
+            <p>First Name</p>
+        </th>
+        <th>
+            <p>Middle Name</p>
+        </th>
+        <th>
+            <p>Last Name</p>
+        </th>
+        <th>
+            <p>Address<p>
+        </th>
+        <th>
+            <p>City</p>
+        </th>
+        <th>
+            <p>State</p>
+        </th>
+        <th>
+            <p>Zip Code</p>
+        </th>
+        <th>
+            <p>Total</p>
+        </th>
+        <th>
+            <p>Date Order was Created</p>
+        </th>
+
+    </tr>
+
+    <tr>
+        <td>
+            @Model.Email
+        </td>
+        <td>
+            @Model.FirstName
+        </td>
+        <td>
+            @Model.MiddleName
+        </td>
+        <td>
+            @Model.LastName
+        </td>
+        <td>
+            @Model.Address
+        </td>
+        <td>
+            @Model.City
+        </td>
+        <td>
+            @Model.State
+        </td>
+        <td>
+            @Model.Zipcode
+        </td>
+        <td>
+             @Model.Total
+        </td>
+        <td>
+             @Model.Date
+        </td>
+         </tr>
+      </table>
+
+
+    @*<p>First Name: @Model.FirstName</p>
+        <p>Middle Name: @Model.MiddleName</p>
+        <p>Last Name: @Model.LastName</p>
+        <p>Address: @Model.Address</p>
+        <p>City: @Model.City</p>
+        <p>State: @Model.State</p>
+        <p>Zipcode: @Model.Zipcode</p>
+        <p>Total: @Model.Total</p>
+        <p>Date Order was placed: @Model.Date</p>*@
+            @*<h4>Menu Items Details:</h4>
+                <p>Name</p>
+                <p>Description</p>
+                <p>Price</p>
+                <p>Quantity</p>*@
+            <p>
+                If you want to make another order click below to head back to our amazing menu!
+                @Html.ActionLink("Customer Menu", "Index", "CustomerMenu")
+            </p>
 

@@ -61,26 +61,39 @@ namespace BATCapstoneSP2017.Controllers
 
                     db.SaveChanges(); //we have received the total amount lets update it
 
-                    return RedirectToAction("Complete", new { id = order.ID });
+                    //return RedirectToAction("Complete", new { id = order.ID });
+                    return RedirectToAction("Complete", new {id = order.ID});
                 }
             }
-            catch 
+            catch
             {
-                // Invalid 
-                return View(order);
+                // I hope this works too lol 
+                return RedirectToAction("Complete", new { id = order.ID });
             }
+            //catch 
+            //{
+            //    // Invalid 
+            //    return View(order);
+            //}
         }
 
+        // public ActionResult Complete(int id)
         public ActionResult Complete(int id)
         {
+
+            Order orderId = db.Orders.Find(id);
+
             // Validates the order belongs to the logged in user 
-            bool isValid = db.Orders.Any(
+            /*bool isValid = db.Orders.Any(
                 o => o.ID == id &&
-                     o.Email == User.Identity.Name);
+                     o.Email == User.Identity.Name);*/
+
+            bool isValid = db.Orders.Any(o => o.ID == id && o.Email == User.Identity.Name);
+
 
             if (isValid)
             {
-                return View(id);
+                return View(orderId);
             }
             else
             {
