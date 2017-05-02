@@ -10,7 +10,7 @@ namespace BATCapstoneSP2017.Controllers
     public class CheckoutController : Controller
     {
         WholeContext db = new WholeContext();
-        const String PromoCode = "FREE";
+        //const String PromoCode = "FREE";
 
         public ActionResult AddressAndPayment()
         {
@@ -32,44 +32,84 @@ namespace BATCapstoneSP2017.Controllers
         {
             var order = new Order();
             var user = new AspNetUser();
-            //order.AspNetUser = user.Email;
-            order.AspNetUsersID = "5f8c1ea6-5717-41ae-894b-47436d8b83da";
+            //var shoppingCartTotal = new ShoppingCart();
+            OrderMenuItem orderTotal = new OrderMenuItem();
+            //order.AspNetUser = user.Email; 
             order.Status = "Open";
-            
+
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            order.Total = cart.GetTotal();
+
 
             TryUpdateModel(order);
 
-            try
-            {
-                if (string.Equals(values["PromoCode"], PromoCode, StringComparison.OrdinalIgnoreCase) == false)
-                {
-                    return View(order);
-                }
-                else
-                {
-                    //order.CustomerUserName = User.Identity.Name;
-                    order.Email = User.Identity.Name;
-                    order.Date = DateTime.Now;
+            //order.CustomerUserName = User.Identity.Name;
+            order.Email = User.Identity.Name;
+            order.Date = DateTime.Now;
+            //order.Total = orderTotal.Total;
+            
+
+            // Save the order
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            // Process order
+            //var cart = ShoppingCart.GetCart(this.HttpContext);
+            cart.CreateOrder(order);
+
+            //db.SaveChanges(); //we have received the total amount lets update it
+
+            //return RedirectToAction("Complete", new { id = order.ID });
+            return RedirectToAction("Complete", new { id = order.ID });
+
+
+            //original code below this comment starting at the try
+            //try
+            //{
+            //    if (string.Equals(values["PromoCode"], PromoCode, StringComparison.OrdinalIgnoreCase) == false)
+            //    {
+            //        //order.CustomerUserName = User.Identity.Name;
+            //        order.Email = User.Identity.Name;
+            //        order.Date = DateTime.Now;
+
+            //        // Save the order
+            //        db.Orders.Add(order);
+            //        db.SaveChanges();
+
+            //        // Process order
+            //        var cart = ShoppingCart.GetCart(this.HttpContext);
+            //        cart.CreateOrder(order);
+
+            //        db.SaveChanges(); //we have received the total amount lets update it
+
+            //        //return RedirectToAction("Complete", new { id = order.ID });
+            //        return RedirectToAction("Complete", new { id = order.ID });
+            //    }
+            //    else
+            //    {
+            //        //order.CustomerUserName = User.Identity.Name;
+            //        order.Email = User.Identity.Name;
+            //        order.Date = DateTime.Now;
                     
-                    // Save the order
-                    db.Orders.Add(order);
-                    db.SaveChanges();
+            //        // Save the order
+            //        db.Orders.Add(order);
+            //        db.SaveChanges();
 
-                    // Process order
-                    var cart = ShoppingCart.GetCart(this.HttpContext);
-                    cart.CreateOrder(order);
+            //        // Process order
+            //        var cart = ShoppingCart.GetCart(this.HttpContext);
+            //        cart.CreateOrder(order);
 
-                    db.SaveChanges(); //we have received the total amount lets update it
+            //        db.SaveChanges(); //we have received the total amount lets update it
 
-                    //return RedirectToAction("Complete", new { id = order.ID });
-                    return RedirectToAction("Complete", new {id = order.ID});
-                }
-            }
-            catch
-            {
-                // I hope this works too lol 
-                return RedirectToAction("Complete", new { id = order.ID });
-            }
+            //        //return RedirectToAction("Complete", new { id = order.ID });
+            //        return RedirectToAction("Complete", new {id = order.ID});
+            //    }
+            //}
+            //catch
+            //{
+            //    // redirect it through here 
+            //    return RedirectToAction("Complete", new { id = order.ID });
+            //}
             //catch 
             //{
             //    // Invalid 

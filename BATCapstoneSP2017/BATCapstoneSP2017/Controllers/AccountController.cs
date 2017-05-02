@@ -151,7 +151,18 @@ namespace BATCapstoneSP2017.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    //FirstName = model.FirstName, 
+                    //MiddleName = model.MiddleName, 
+                    //LastName = model.LastName, 
+                    //Street = model.Street, 
+                    //City = model.City, 
+                    //State = model.State, 
+                    //Zipcode = model.Zipcode
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,7 +174,7 @@ namespace BATCapstoneSP2017.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Edit", "UserProfile");
                 }
                 AddErrors(result);
             }

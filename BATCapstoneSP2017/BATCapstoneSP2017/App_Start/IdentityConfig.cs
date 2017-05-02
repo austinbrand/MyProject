@@ -43,6 +43,9 @@ namespace BATCapstoneSP2017
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+
+            //var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<WholeContext>()));
+
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -106,4 +109,5 @@ namespace BATCapstoneSP2017
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
 }

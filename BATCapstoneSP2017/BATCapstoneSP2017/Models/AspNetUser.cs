@@ -40,6 +40,7 @@ namespace BATCapstoneSP2017.Models
         public string City { get; set; }
         public string State { get; set; }
         public Nullable<int> Zipcode { get; set; }
+        public string MiddleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

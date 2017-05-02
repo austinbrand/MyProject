@@ -9,6 +9,19 @@ namespace BATCapstoneSP2017.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+
+        //public string FirstName { get; set; }
+        //public string MiddleName { get; set; }
+        //public string LastName { get; set; }
+        //public string Street { get; set; }
+        //public string City { get; set; }
+        //public string State { get; set; }
+        //public int Zipcode { get; set; }
+        //public string PhoneNumber { get; set; }
+
+
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -17,6 +30,24 @@ namespace BATCapstoneSP2017.Models
             return userIdentity;
         }
     }
+
+
+    //public class WholeContext : IdentityDbContext<ApplicationUser>
+    //{
+    //    public WholeContext() : base("WholeContext", throwIfV1Schema: false)
+    //    {
+
+    //    }
+
+    //    public static WholeContext Create()
+    //    {
+    //        return new WholeContext();
+    //    }
+
+    //}
+
+
+
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

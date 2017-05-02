@@ -6183,7 +6183,7 @@ body.modal-open,
   text-shadow: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
@@ -6195,6 +6195,7 @@ body.modal-open,
   .carousel-caption {
     right: 20%;
     left: 20%;
+    top: 10%;
     padding-bottom: 30px;
   }
   .carousel-indicators {

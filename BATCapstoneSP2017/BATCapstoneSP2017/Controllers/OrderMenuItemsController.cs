@@ -14,6 +14,8 @@ namespace BATCapstoneSP2017.Controllers
     {
         WholeContext db = new WholeContext();
         
+        
+        [Authorize(Roles = "Administrator")]
         // GET: OrderMenuItems
         public ActionResult Index()
         {
@@ -85,7 +87,7 @@ namespace BATCapstoneSP2017.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int Id)
         {
             Order orderItemToDelete = db.Orders.Find(Id);
@@ -102,7 +104,7 @@ namespace BATCapstoneSP2017.Controllers
         }
 
 
-        [Authorize]
+        [Authorize (Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         //[AcceptVerbs(HttpVerbs.Post)]

@@ -7,6 +7,7 @@ using BATCapstoneSP2017.Models;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
+using BATCapstoneSP2017.ViewModels;
 
 namespace BATCapstoneSP2017.Controllers
 {
@@ -14,12 +15,17 @@ namespace BATCapstoneSP2017.Controllers
     {
 
         WholeContext db = new WholeContext();
+        //CategorieViewModel viewModel = new CategorieViewModel();
+        //string category1 = "Food";
+        //string category2 = "Beverages";
+        //string category3 = "Desserts";
         
         // GET: CustomerMenu
         public ActionResult Index()
         {
             //List<MenuItem> MenuItems = new List<MenuItem>();
             //var cart = ShoppingCart.GetCart(this.HttpContext);
+
 
             return View(db.MenuItems.ToList());
         }

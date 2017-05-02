@@ -21,7 +21,6 @@ namespace BATCapstoneSP2017.Models
         }
     
         public int ID { get; set; }
-        public string AspNetUsersID { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
         public string Email { get; set; }
@@ -31,7 +30,7 @@ namespace BATCapstoneSP2017.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zipcode { get; set; }
+        public Nullable<int> Zipcode { get; set; }
         public decimal Total { get; set; }
         public int CartId { get; set; }
     

@@ -61,6 +61,7 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
     <Property Name="Street" Type="nvarchar" MaxLength="50" />
     <Property Name="City" Type="nvarchar" MaxLength="50" />
@@ -126,17 +127,16 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AspNetUsersID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="State" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="Zipcode" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nchar" MaxLength="10" />
+    <Property Name="Zipcode" Type="int" />
     <Property Name="Total" Type="money" Nullable="false" />
     <Property Name="CartId" Type="int" Nullable="false" />
   </EntityType>
